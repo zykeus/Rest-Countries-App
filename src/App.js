@@ -1,11 +1,14 @@
 import HeaderController from './components/header/HeaderController';
 import MainController from './components/main/MainController';
+import CountryDataProvider from './components/hooks/useCountryData';
 
 function App() {
   return (
     <>
-      <HeaderController />
-      <MainController />
+      <CountryDataProvider>
+        <HeaderController />
+        <MainController />
+      </CountryDataProvider>
     </>
   );
 }

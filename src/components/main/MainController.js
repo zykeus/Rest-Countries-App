@@ -1,10 +1,10 @@
 import MainView from './MainView';
-import FormController from '../form/FormController';
+import HomePageController from './HomePageController';
 
 const MainController = () => {
     return (
         <MainView>
-            <FormController />
+            <HomePageController />
         </MainView>
     )
 };

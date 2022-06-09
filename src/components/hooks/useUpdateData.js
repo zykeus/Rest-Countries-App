@@ -6,17 +6,17 @@ export const useUpdateData = () => {
 	const [error, setError] = useState(null);
 	const [updateData, setUpdateData] = useState({
 		setType: function(){},
-		searchType: 'all',
+		searchType: '',
 		errorMessage: 'Country not found'
 	})
 
 	useEffect(() => {
-		if(!updateData.searchValue && !updateData.searchType) return;
+		if(!updateData.searchType) return;
 		const { searchType, setType, errorMessage } = updateData;
 		const fetchData = async () => {
 			try {
 	           const { data: countriesData } = await api.get(`/${searchType}`);
-           		setType(countriesData)
+           	   setType(countriesData)
 			} catch(err) {
 				setError(err)
 			} finally {	
@@ -24,7 +24,7 @@ export const useUpdateData = () => {
 			}
 		}
 		fetchData();
-	}, [])
+	}, [updateData.searchType])
 
 	return { setUpdateData, error, isLoading }
 }

@@ -1,7 +1,10 @@
+import HeaderController from './components/header/HeaderController';
 
 function App() {
   return (
-    <div></div>
+    <>
+      <HeaderController />
+    </>
   );
 }
 

@@ -34,6 +34,9 @@ module.exports = {
         'medium': 600,
         'extra-bold': 800
       },
+      gridTemplateColumns: {
+        'header': 'max-content 1fr max-content',
+      }
     },
   },
   plugins: [require('@tailwindcss/forms')],

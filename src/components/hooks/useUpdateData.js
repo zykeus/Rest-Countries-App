@@ -6,17 +6,46 @@ export const useUpdateData = () => {
 	const [error, setError] = useState(null);
 	const [updateData, setUpdateData] = useState({
 		setType: function(){},
-		searchType: '',
+		searchValue: '',
+		searchType: 'all',
+		isDropDown: false,
 		errorMessage: 'Country not found'
 	})
 
 	useEffect(() => {
-		if(!updateData.searchType) return;
-		const { searchType, setType, errorMessage } = updateData;
+		if(!updateData.searchValue && !updateData.searchType) return;
+		const { searchType, setType, isDropDown, errorMessage, searchValue } = updateData;
 		const fetchData = async () => {
 			try {
-	           const { data: countriesData } = await api.get(`/${searchType}`);
-           	   setType(countriesData)
+				if(searchValue) {
+                	if(searchType === 'region') {
+                    const {data: countriesData} = await api.get(`${searchType}/${searchValue.trim()}`)
+                    setType(countriesData);
+                    return;
+                	}
+                
+	                const searchTrimed = searchValue.trim();
+	                const searchTyped = searchValue.length <= 3 ? 'alpha' : 'name';
+	                const checkForSpaces = searchTrimed.includes(' ');
+
+
+	                const checkIsFullName = checkForSpaces ? `${searchTyped}/${searchTrimed}?fullText=true` :
+	                `${searchTyped}/${searchTrimed}`;
+
+               		const {data: countriesData} = await api.get(`/${checkIsFullName}`);
+               		setType(countriesData)
+               		return;
+	           } else {
+	           		const {data: countriesData} = await api.get(`/${searchType}`);
+	           		if(isDropDown) {
+		                setType(oldsetDropDownState => {
+		                    const continents = new Set(countriesData.map(country => country.region));
+		                    return {...oldsetDropDownState, 
+		                        continentNames: [...continents],
+		                    }
+		                })
+           		 	} else setType(countriesData)
+           		}
 			} catch(err) {
 				setError(err)
 			} finally {	
@@ -24,7 +53,7 @@ export const useUpdateData = () => {
 			}
 		}
 		fetchData();
-	}, [updateData.searchType])
+	}, [updateData.searchValue, updateData.searchType])
 
 	return { setUpdateData, error, isLoading }
 }

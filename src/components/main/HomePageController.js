@@ -1,6 +1,7 @@
 import FormController from '../form/FormController';
 import { useCountryData } from '../hooks/useCountryData';
 import CountryFigureController from './CountryFigureController';
+import DropDownController from './DropDownController';
 
 const HomePageController = () => {
     const { countryData } = useCountryData();
@@ -8,6 +9,7 @@ const HomePageController = () => {
         <>
             <FormController />
             <CountryFigureController countryData={countryData} />
+            <DropDownController />
         </>
     )
 };

@@ -2,9 +2,10 @@ import FormView from "./FormView";
 import FormModel from "./FormModel";
 
 const FormController = () => {
-
+    const { inputCountry, handleInputCountryChange, handleInputCountrySubmit} = FormModel();
+   
     return (
-        <FormView />
+        <FormView model={{ inputCountry, handleInputCountryChange, handleInputCountrySubmit}} />
     )
 };
 

@@ -31,7 +31,7 @@ const CountryFigureView = ({countryData}) => {
 						})
 					)}
 				</Fragment>
-			: null
+			: countryData.name ? <Fragment><Figure country={countryData}/></Fragment> : null
 			}
 		</>
 		

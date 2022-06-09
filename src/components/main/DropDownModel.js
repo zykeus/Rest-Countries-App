@@ -1,6 +1,7 @@
 import { useUpdateData } from '../hooks/useUpdateData';
 import { useCountryData } from '../hooks/useCountryData';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const DropDownModel = () => {
      const [dropDownState, setDropDownState] = useState({
@@ -9,8 +10,9 @@ const DropDownModel = () => {
         showDropDown: false
     })
 
-    const { setCountryData } = useCountryData();
+    const { setCountryData, setPageNumber } = useCountryData();
     const { setUpdateData } = useUpdateData();
+    const navigate = useNavigate();
 
      const handleDropDownState = (ev) => {
         ev.preventDefault();
@@ -40,14 +42,13 @@ const DropDownModel = () => {
 
 
     useEffect(() => {
-        if(!dropDownState.showDropDown) return;
          setUpdateData({    
             setType: setDropDownState, 
             isDropDown: true,
             searchType: 'all',
             errorMessage: 'Invalid Continent'
         })
-    }, [dropDownState.showDropDown]);
+    }, []);
 
     useEffect(() => {
         if(dropDownState.optionChoosen === 'Filter by Region') return;
@@ -57,6 +58,8 @@ const DropDownModel = () => {
             searchValue: dropDownState.optionChoosen,
             errorMessage: 'Invalid Continent'
         })
+        setPageNumber(1)
+        navigate(`/page/${1}`)
     }, [dropDownState.optionChoosen])
 
     return {dropDownState, handleDropDownState}

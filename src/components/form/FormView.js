@@ -1,8 +1,6 @@
-import { useState, Children } from 'react';
-import { IoMdSearch as Search, IoIosArrowDown as ArrowDown } from 'react-icons/io';
+import { IoMdSearch as Search } from 'react-icons/io';
 
 const FormView = ({ model }) => {
-
     return (
         <form className='grid gap-12 md:col-start-1 md:col-span-full md:w-1/2 md:text-lg md-lg:row-start-1 md-lg:row-span-1 md-lg:col-start-1 md-lg:col-span-2 
             md-lg:justify-self-start md-lg:w-1/2 md-lg:self-center lg:row-start-1 

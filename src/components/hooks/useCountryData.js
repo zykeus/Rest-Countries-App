@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState, createContext } from 'react';
-import { useApi } from './useApi';
+import { useUpdateData } from './useUpdateData';
 
 const CountryContextData = createContext();
 
 const CountryDataProvider = ({children}) => {
 	const [countryData, setCountryData] = useState([]);
-    const { setUpdateData } = useApi();
+    const { setUpdateData } = useUpdateData();
 
 	useEffect(() => {
 		setUpdateData({	

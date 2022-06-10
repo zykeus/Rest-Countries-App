@@ -9,7 +9,7 @@ const FormModel = () => {
         submit: '',
     });
     const { setCountryData, setPageNumber } = useCountryData();
-    const { setUpdateData } = useUpdateData();
+    const { setUpdateData, error } = useUpdateData();
     const navigate = useNavigate();
     
     const handleInputCountryChange = (ev) => {
@@ -36,8 +36,8 @@ const FormModel = () => {
         })
         setPageNumber(1)
         navigate(`/page/${1}`)
-
-    }, [inputCountry.submit]);
+        
+    }, [inputCountry.submit, error]);
 
     return {
         inputCountry, handleInputCountryChange, handleInputCountrySubmit

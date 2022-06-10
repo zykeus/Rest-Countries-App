@@ -1,8 +1,11 @@
 import CountryFigureView from './CountryFigureView';
+import CountryFigureModel from './CountryFigureModel';
 
 const CountryFigureController = (props) => {
+	const { handleGetHeadingElement } = CountryFigureModel();
+
 	return (
-		<CountryFigureView {...props} />
+		<CountryFigureView {...props} handleGetHeadingElement={handleGetHeadingElement}/>
 	)
 };
 

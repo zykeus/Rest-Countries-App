@@ -39,7 +39,6 @@ const Pagination = () => {
       }
 
       allLinkPages.forEach(pageButton => {
-        console.log(pageButton.ariaLabel)
         if(pageButton.ariaLabel !== "Page previous " || pageButton.ariaLabel !== "Page next"){
             changeLinkClasses(pageButton, false, `Page ${pageButton.textContent}`)
           } 

@@ -42,13 +42,13 @@ const DropDownModel = () => {
 
 
     useEffect(() => {
+        if(!dropDownState.showDropDown) return
          setUpdateData({    
             setType: setDropDownState, 
             isDropDown: true,
             searchType: 'all',
-            errorMessage: 'Invalid Continent'
         })
-    }, []);
+    }, [dropDownState.showDropDown]);
 
     useEffect(() => {
         if(dropDownState.optionChoosen === 'Filter by Region') return;
@@ -56,7 +56,6 @@ const DropDownModel = () => {
             setType: setCountryData, 
             searchType: 'region',
             searchValue: dropDownState.optionChoosen,
-            errorMessage: 'Invalid Continent'
         })
         setPageNumber(1)
         navigate(`/page/${1}`)

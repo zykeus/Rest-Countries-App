@@ -37,6 +37,8 @@ module.exports = {
       gridTemplateColumns: {
         'header': 'max-content 1fr max-content',
         'main': 'repeat(auto-fit, minmax(285px, 1fr))',
+        'details': 'max-content 1fr',
+        'details-footer': 'max-content max-content'
       }
     },
   },

@@ -3,18 +3,16 @@ import { useState, useEffect } from 'react';
 
 export const useUpdateData = () => {
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
 	const [updateData, setUpdateData] = useState({
 		setType: function(){},
 		searchValue: '',
 		searchType: 'all',
 		isDropDown: false,
-		errorMessage: 'Country not found'
 	})
 
 	useEffect(() => {
 		if(!updateData.searchValue && !updateData.searchType) return;
-		const { searchType, setType, isDropDown, errorMessage, searchValue } = updateData;
+		const { searchType, setType, isDropDown, searchValue } = updateData;
 		const fetchData = async () => {
 			try {
 				if(searchValue) {
@@ -46,8 +44,6 @@ export const useUpdateData = () => {
 		                })
            		 	} else setType(countriesData)
            		}
-			} catch(err) {
-				setError(err)
 			} finally {	
 				setIsLoading(false);
 			}
@@ -55,5 +51,5 @@ export const useUpdateData = () => {
 		fetchData();
 	}, [updateData.searchValue, updateData.searchType])
 
-	return { setUpdateData, error, isLoading }
+	return { setUpdateData, isLoading }
 }

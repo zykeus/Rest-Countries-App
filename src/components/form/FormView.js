@@ -2,9 +2,9 @@ import { IoMdSearch as Search } from 'react-icons/io';
 
 const FormView = ({ model }) => {
     return (
-        <form className='grid gap-12 md:col-start-1 md:col-span-full md:w-1/2 md:text-lg md-lg:row-start-1 md-lg:row-span-1 md-lg:col-start-1 md-lg:col-span-2 
-            md-lg:justify-self-start md-lg:w-1/2 md-lg:self-center lg:row-start-1 
-            lg:row-span-1 lg:col-start-1 lg:col-span-3  dark:text-very-light-gray'>
+        <form className='grid gap-12 md:w-2/3 md:text-lg 
+            md-lg:w-1/2 xl:w-1/3 
+            dark:text-very-light-gray'>
              <p className='relative bg-white text-dark-gray flex justify-end items-center rounded-lg shadow-md dark:bg-dark-blue dark:text-white'>
                 <span className='absolute left-8 z-40'>
                     <Search className='text-2xl'/>

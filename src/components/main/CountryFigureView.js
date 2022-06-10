@@ -3,9 +3,9 @@ import FigureMainView from './FigureMainView';
 
 const COUNTRY_TITLES_SPEC = ['population', 'region', 'capital'];
 
-const Figure = ({country}) => {
+const Figure = ({country, handleGetHeadingElement}) => {
 	return (
-		<FigureMainView country={country}>
+		<FigureMainView country={country} handleGetHeadingElement={handleGetHeadingElement}>
 			{Children.toArray(
 				COUNTRY_TITLES_SPEC.map(titles => {
 					return (
@@ -20,18 +20,18 @@ const Figure = ({country}) => {
 		</FigureMainView>
 	)
 } 
-const CountryFigureView = ({countryData}) => {
+const CountryFigureView = ({countryData, handleGetHeadingElement}) => {
 	return (
 		<>
 			{countryData && countryData.length > 0 ?
 				<Fragment>
 					{Children.toArray(
 						countryData.map(country => {
-							return <Figure country={country} />
+							return <Figure country={country}  handleGetHeadingElement={handleGetHeadingElement}/>
 						})
 					)}
 				</Fragment>
-			: countryData.name ? <Fragment><Figure country={countryData}/></Fragment> : null
+			: countryData.name ? <Fragment><Figure country={countryData}  handleGetHeadingElement={handleGetHeadingElement}/></Fragment> : null
 			}
 		</>
 		

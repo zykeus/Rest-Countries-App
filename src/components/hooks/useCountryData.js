@@ -5,14 +5,17 @@ const CountryContextData = createContext();
 
 const CountryDataProvider = ({children}) => {
 	const [countryData, setCountryData] = useState([]);
+	const [countryDetailsPage, setCountryDetailsPage] = useState([]);
+	const [countryName, setCountryName] = useState('');
     const { setUpdateData } = useUpdateData();
     const [pageNumber, setPageNumber] = useState(0);
+    const [isUrlChanged, setChangeUrl] = useState(false);
+    const [bordersClickedAmount, setBordersClickedAmount] = useState(0);
 
 	useEffect(() => {
 		setUpdateData({	
 			setType: setCountryData, 
             searchType: 'all',
-			errorMessage: 'Something went wrong. Countries not Found. Check url request and try again',
             isDropDown: false
 		})
     }, []);
@@ -22,8 +25,16 @@ const CountryDataProvider = ({children}) => {
                 {
                     countryData, 
                     setCountryData, 
+                    countryDetailsPage, 
+                    setCountryDetailsPage, 
+                    countryName, 
+                    setCountryName, 
                     pageNumber, 
                     setPageNumber, 
+                    setChangeUrl, 
+                    isUrlChanged,
+                    bordersClickedAmount,
+                    setBordersClickedAmount
                 }}>
 			{children}
 		</CountryContextData.Provider>
